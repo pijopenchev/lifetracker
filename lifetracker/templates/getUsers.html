@@ -1,0 +1,11 @@
+<div>
+    {% if users %}
+    <ul>
+        {% for u in users %}
+            <li><a href="{% url 'getUser' u.id %}">{{ u.email }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        No users found.
+    {% endif %}
+</div>
