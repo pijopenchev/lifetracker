@@ -9,7 +9,7 @@
         {% block header %}
             <h3>Lifetracker</h3>
             {% if lt_username %}
-                <p>Welcome {{ lt_username }}!</p>
+                <p>Welcome {{ lt_username }}! (<a href="{% url 'lifetracker:logout' %}">logout)</a></p>
             {% endif %}
         {% endblock %}
     </div>
