@@ -1,19 +1,17 @@
-<html>
-    <head>
-        <title>Lifetracker</title>
-    </head>
-    <body>
-        {{ message }}
-        <form action="{% url 'lifetracker:addNote' %}" method="post">
-            {% csrf_token %}
-            <div>
-                <label for="newNote">Note:</label>
-                <input type="text" name="newNote" id="newNote" />
-                <br><br>
-                <input type="submit" value="Add" />
-            </div>
-        </form>
-    </body>
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ message }}
+<form action="{% url 'lifetracker:addNote' %}" method="post">
+    {% csrf_token %}
+    <div>
+        <label for="newNote">Note:</label>
+        <input type="text" name="newNote" id="newNote" />
+        <br><br>
+        <input type="submit" value="Add" />
+    </div>
+</form>
 
 
-</html>
+{% endblock %}
