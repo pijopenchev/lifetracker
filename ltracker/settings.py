@@ -113,6 +113,7 @@ LOGIN_REDIRECT_URL = '/lifetracker/'
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
 
 # LOGGING = {
 #     'version': 1,

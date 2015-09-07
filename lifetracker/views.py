@@ -10,12 +10,20 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def index(request, message=''):
-    return render(request, "index.html", {'message': message})
+    user = request.user
+    notes = Note.objects.filter(user=user)
+    return render(request, "index.html", {'message': message, 'notes': notes})
 
 @login_required
 def getUsers(request):
     users = User.objects.all()
     return render(request, "getUsers.html", {'users': users})
+
+@login_required
+def getNotes(request):
+    notes = Note.objects.all()
+    return render(request, "getNotes.html", {'notes': notes})
+
 @login_required
 def getUser(request, user_id):
     try:
@@ -43,7 +51,7 @@ def addNote(request):
         note.save()
         message = "Note added successfully."
 
-    return render(request, 'index.html', {'message': message})
+    return redirect('/lifetracker/?message=' + message)
 
 
 

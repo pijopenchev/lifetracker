@@ -11,6 +11,23 @@
         <br><br>
         <input type="submit" value="Add" />
     </div>
+    <br>
+    <div>
+        <table>
+            <tr>
+               <th >User</th>
+               <th >Content</th>
+               <th >Date</th>
+            </tr>
+            {% for n in notes %}
+                <tr>
+                   <td >{{ n.user.username }}</td>
+                   <td >{{ n.body }}</td>
+                   <td >{{ n.create_ts }}</td>
+                </tr>
+            {% endfor %} 
+       </table>
+    </div>
 </form>
 
 

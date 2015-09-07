@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css" />
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'lifetracker/bootstrap/css/bootstrap.min.css' %}" />
     <title>{% block title %}Lifetracker{% endblock %}</title>
 </head>
 <body>
-    <div id="header">
-        {% block header %}
-            <h3>Lifetracker</h3>
-            {% if lt_username %}
-                <p>Welcome {{ lt_username }}! (<a href="{% url 'lifetracker:logout' %}">logout)</a></p>
-            {% endif %}
-        {% endblock %}
-    </div>
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+{% block header %}
+    <nav class="navbar navbar" role="navigation">
+       <div id="accordion" class="panel-group group">
+		<div class="container">
+			<div class="panel">
+				<h3>Lifetracker</h3>
+			</div>
+			<div class="panel clearfix">
+				{% if lt_username %}
+					<p>Welcome {{ lt_username }}! (<a href="{% url 'lifetracker:logout' %}">logout)</a></p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+    </nav>
+{% endblock %}
+<section class="mainSection">
+	<div class="container">
+		<div class="clearfix contentWrapper">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</section>
 </body>
 </html>
